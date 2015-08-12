@@ -51,13 +51,13 @@ Create the following Express routes:
  * **PUT** `/api/sighting?id='09evasd09jhahs9d8h9vh'`
  * **DELETE** `/api/sighting?id='09evasd09jhahs9d8h9vh'`
 
-**Breakpoint:** You should be able to hit these endpoints without error.  To make sure they're actually running correctly, put `console.log` in your functions and hit those endpoints with POSTMan see that they're running.  For the routes that take queries, `console.log` those queries and make sure you're getting them correctly.  We have not connected these routes to the database yet.  We will add that functionality in the next step.
+**Breakpoint:** You should be able to hit these endpoints without error.  To make sure they're actually running correctly, put `console.log` in your functions and hit those endpoints with POSTMan to see that they're running.  For the routes that take queries, `console.log` those queries and make sure you're getting them correctly.  We have not connected these routes to the database yet.  We will add that functionality in the next step.
 
 ## Step 4: Connect API to MongoDB
 
 NOTE: I will refer to two different types of queries here.  If I say request query, I mean the query supplied from the front-end via the URL.  Otherwise, I mean a MongoDB query.
 
- - In your POST route handler, create a new document through the Sighting model.  If you are confused how the logic for this might look, refer Mongoose docs on [models](http://mongoosejs.com/docs/models.html) if you need guidance. Send an appropriate response to the client (success, or error).
+ - In your POST route handler, create a new document through the Sighting model.  If you are confused how the logic for this might look, take a look at the Mongoose docs on [models](http://mongoosejs.com/docs/models.html) for guidance. Send an appropriate response to the client (success, or error).
 
 **Breakpoint:** You should be able to save data to your database now.  After posting one or two pieces of dummy data, check to see that that data now exists, using either the command line or a GUI like RoboMongo. If you can see data in your database, you will know that you are correctly connected to the database, and that it is saving correctly. Try posting data that will not pass our schema validations or needs to be lowercased to see what happens.
 
@@ -67,7 +67,7 @@ NOTE: I will refer to two different types of queries here.  If I say request que
 
  - In the DELETE route handler, delete *x* document where *x* is the id supplied by the request query.
 
-**Breakpoint:** Test each of your endpoints with POSTMan and either the command line or RoboMongo to ensure that everything is happening as expected.
+**Breakpoint:** Test each of your endpoints with POSTMan and either the command line or RoboMongo to make sure everything is working as expected.
 
 ===========
 
