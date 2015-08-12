@@ -24,6 +24,7 @@ app.delete('/sighting/:id', SightingCtrl.delete);
 var port = 11331;
 var mongoUri = 'mongodb://localhost:27017/mini-birds-mongoose';
 
+mongoose.set('debug', true);
 mongoose.connect(mongoUri);
 mongoose.connection.once('open', function() {
   console.log('connected to mongoDB at: ', mongoUri);
@@ -32,23 +33,3 @@ mongoose.connection.once('open', function() {
 app.listen(port, function() {
   console.log('listening on port: ', port);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// app.post('/sighting', SightingCtrl.create);
-// app.get('/sighting', SightingCtrl.read);
-// app.put('/sighting/:id', SightingCtrl.update);
-// app.delete('/sighting/:id', SightingCtrl.delete);
