@@ -1,4 +1,4 @@
-# mini-birdsMongoose
+# mini-birds-mongoose
 ## Objectives
 The purpose of this project is to solidify your understanding of Mongoose as an ORM for MongoDB.  By the end of the project, you should know how to set up a Mongoose model and perform CRUD operations using that model.
 
@@ -33,9 +33,10 @@ In a separate file called 'Sighting.js' create a model for our Sighting data. No
 
  * Give all properties a data type
  * Make all _name_ inputs lowercase
- * Restrict the length of _order_ property
- * Enumerate the possible values for _status_
+ * Restrict the length of _order_ property to 20
+ * Enumerate the possible values for _status_, make them lowercase
  * Ensure the _numberSeen_ is greater than 0
+ * Set a default of false on _confirmed_
  * Require and Index properties where appropriate
 
 **Consider** adding a hook to create and update an _updatedAt_ field
