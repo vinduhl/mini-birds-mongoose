@@ -47,7 +47,7 @@ In a separate file called 'Sighting.js' create a model for our Sighting data. No
 Create the following Express routes:
 
  * **POST** `/api/sighting`
- * **GET** `/api/sighting?region='some-region'&species='some-species'&validated=true`
+ * **GET** `/api/sighting?status='some status'`
  * **PUT** `/api/sighting?id='09evasd09jhahs9d8h9vh'`
  * **DELETE** `/api/sighting?id='09evasd09jhahs9d8h9vh'`
 
@@ -61,7 +61,7 @@ NOTE: I will refer to two different types of queries here.  If I say request que
 
 **Breakpoint:** You should be able to save data to your database now.  After posting one or two pieces of dummy data, check to see that that data now exists, using either the command line or a GUI like RoboMongo. If you can see data in your database, you will know that you are correctly connected to the database, and that it is saving correctly. Try posting data that will not pass our schema validations or needs to be lowercased to see what happens.
 
- - In your GET route handler, create a Mongoose query that will return sightings.  If there is a region specified in the request query, return only the sightings in that region.  If the request query specifies a species, return only the sightings of that species. If the request query specifies validated or non-validated sightings return only those requested.  If there are no request queries, return all of the sightings.
+ - In your GET route handler, create a Mongoose query that will return sightings. If a `status` query parameter is specified, return sightings that match the status. If not, return all the sightings.
 
  - In the PUT route handler, update *x* document (where *x* is the id supplied by the request query) with the data provided in `req.body`.
 
