@@ -72,3 +72,7 @@ NOTE: I will refer to two different types of queries here.  If I say request que
 ===========
 
 You have just created created an API using Mongoose! With the modeling and schema capabilities of Mongoose you now have greater power as to what and how data is stored to your database. Don't get too power hungry, though... Absolute power corrupts, absolutely.
+
+## Copyright
+
+© DevMountain LLC, 2016. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
