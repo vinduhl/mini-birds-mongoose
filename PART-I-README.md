@@ -1,6 +1,6 @@
 # mini-birds-mongoose (Part I)
  
-We're going to build a bird sighting API using four common CRUD operations.
+_Goal_: Build a **bird sighting** API in Express using four common CRUD operations in MongoDB using MongoJS.
 
 ## Sample Data
 
