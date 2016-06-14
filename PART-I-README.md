@@ -114,3 +114,8 @@ Return the newly updated sighting in your response.
 ## Step 10: Upgrade 'DELETE' endpoint to delete a sighting
 
 Update your DELETE endpoint to delete a sighting document by `id` in the query string.
+
+
+## Copyright
+
+© DevMountain LLC, 2016. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.

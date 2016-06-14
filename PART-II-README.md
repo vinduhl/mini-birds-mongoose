@@ -97,3 +97,7 @@ Add a POST endpoint for creating new users: `/api/users`. Test it with real data
 * POST a new `/api/sighting`, this time using the new _Sighting_ data and a _User_ id.
 * When GET `/api/sighting` is requested make sure to populate it with _User_ data before returning it to the client.
 * Make it possible for the client to request sightings for a specific user by through sending the user id as a part of the request query in addition to `status`.
+
+## Copyright
+
+© DevMountain LLC, 2016. Unauthorized use and/or duplication of this material without express and written permission from DevMountain, LLC is strictly prohibited. Excerpts and links may be used, provided that full and clear credit is given to DevMountain with appropriate and specific direction to the original content.
