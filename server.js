@@ -3,13 +3,15 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var mongoose = require('mongoose');
 var Sighting = require("./sightings");
+var Bird = require("./bird");
+var User = require("./user");
 
 var app = express();
 app.use(bodyParser.json());
 
 var port = 3000;
 
-mongoose.connect("mongodb://localhost:27017/birds-mongoose");
+mongoose.connect("mongodb://localhost:27017/birds-mongoose-2");
 mongoose.connection.once("open", function() {
   console.log("Mongoose connected");
 })
@@ -20,6 +22,15 @@ app.post('/api/sighting', function(req, res) {
       return res.status(500).json(err);
     }
     return res.status(200).json(sighting);
+  });
+});
+
+app.post('/api/users', function(req, res) {
+  new User(req.body).save( (err, user) => {
+    if(err) {
+      return res.status(500).json(err);
+    }
+    return res.status(200).json(user);
   });
 });
 
