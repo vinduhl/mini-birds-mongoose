@@ -15,7 +15,6 @@ mongoose.connection.once("open", function() {
 })
 
 app.post('/api/sighting', function(req, res) {
-  console.log('POST sighting');
   new Sighting(req.body).save( (err, sighting) => {
     if(err) {
       return res.status(500).json(err);
@@ -25,7 +24,6 @@ app.post('/api/sighting', function(req, res) {
 });
 
 app.get('/api/sighting/', function(req, res) {
-  console.log('GET sighting');
   let allSightings = Sighting.find();
   let promise = null;
   if(req.query.status) {
@@ -44,13 +42,27 @@ app.get('/api/sighting/', function(req, res) {
 });
 
 app.delete('/api/sighting', function(req, res) {
-  console.log('DELETE sighting');
-  res.end();
+  Sighting.findByIdAndRemove(req.query.id, (err, deletedSighting) => {
+    if(err) {
+      return res.status(500).json(err);
+    }
+    return res.status(200).json(deletedSighting);
+  })
 });
 
 app.put('/api/sighting', function(req, res) {
-  console.log('PUT sighting');
-  res.end();
+  Sighting.findByIdAndUpdate(req.query.id, { $set: { order: req.body.order }}, (err, sighting) => {
+    if(err) {
+      return res.status(500).json(err);
+    }
+    Sighting.findById(req.query.id).exec().then( (err, sighting) => {
+      if(err) {
+        return res.status(500).json(err);
+      }
+      return res.status(200).json(sighting);
+    });
+
+  });
 });
 
 app.listen(port, function() {
