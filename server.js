@@ -25,22 +25,13 @@ app.post('/api/sighting', function(req, res) {
   });
 });
 
-app.post('/api/users', function(req, res) {
-  new User(req.body).save( (err, user) => {
-    if(err) {
-      return res.status(500).json(err);
-    }
-    return res.status(200).json(user);
-  });
-});
-
 app.get('/api/sighting/', function(req, res) {
   let allSightings = Sighting.find();
   let promise = null;
   if(req.query.status) {
-    promise = allSightings.where("status").equals(req.query.status).exec();
+    promise = allSightings.where("status").equals(req.query.status).populate("bird").populate("user").exec();
   } else {
-    promise = allSightings.exec();
+    promise = allSightings.populate("bird").populate("user").exec();
   }
 
   promise.then( (sighting, err) => {
@@ -61,6 +52,7 @@ app.delete('/api/sighting', function(req, res) {
   })
 });
 
+// TODO: change this
 app.put('/api/sighting', function(req, res) {
   Sighting.findByIdAndUpdate(req.query.id, { $set: { order: req.body.order }}, (err, sighting) => {
     if(err) {
@@ -73,6 +65,43 @@ app.put('/api/sighting', function(req, res) {
       return res.status(200).json(sighting);
     });
 
+  });
+});
+
+
+app.post('/api/users', function(req, res) {
+  new User(req.body).save( (err, user) => {
+    if(err) {
+      return res.status(500).json(err);
+    }
+    return res.status(201).json(user);
+  });
+});
+
+app.get('/api/users', function(req, res) {
+  User.find().then( (err, users) => {
+    if(err) {
+      return res.status(500).json(err);
+    }
+    return res.status(200).json(users);
+  });
+});
+
+app.post('/api/birds', function(req, res) {
+  new Bird(req.body).save( (err, bird) => {
+    if(err) {
+      return res.status(500).json(err);
+    }
+    return res.status(201).json(bird);
+  });
+});
+
+app.get('/api/birds', function(req, res) {
+  Bird.find().then( (err, birds) => {
+    if(err) {
+      return res.status(500).json(err);
+    }
+    return res.status(200).json(birds);
   });
 });
 
